@@ -12,9 +12,9 @@ VITE_API_KEY_ID=...
 VITE_API_KEY_SECRET=...
 ```
 
-npm install
+Install the required packages:
 
-npm run dev
+`npm install`
 
 ## Usage
 
