@@ -4,7 +4,7 @@ This example demonstrates how to connect to the Viam app and make calls to it.
 
 ## Prerequisits
 
-Create a `.env` file with the following content and add the appropriate values for your device. The easiest way to get the values is through app.viam.com via the `CONNECT` tab:
+Create a `.env` file with the following content and add the appropriate values for your device. The easiest way to get the values is through app.viam.com:
 
 ```
 VITE_ORG_ID=...
