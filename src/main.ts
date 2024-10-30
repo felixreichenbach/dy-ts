@@ -5,6 +5,19 @@ const HOST = import.meta.env.VITE_HOST;
 const API_KEY_ID = import.meta.env.VITE_API_KEY_ID;
 const API_KEY_SECRET = import.meta.env.VITE_API_KEY_SECRET;
 
+// Parse PGN data
+function parsePgnData(pgnData: Record<string, any>): string {
+  let parsedData = "";
+  for (const [key, value] of Object.entries(pgnData)) {
+    // split the key to get the PGN number and SRC address
+    const [pgn, src] = key.split("-");
+    parsedData += `${Number("0x" + pgn)}-${Number("0x" + src)}: ${atob(
+      value
+    )}<br>`;
+  }
+  return parsedData;
+}
+
 // Connect to the machine / Njordlink device api
 async function mconnect(): Promise<VIAM.RobotClient> {
   const opts: VIAM.DialConf = {
@@ -48,9 +61,8 @@ async function mrun(client: VIAM.RobotClient) {
     // nmea
     const nmeaClient = new VIAM.SensorClient(client, "nmea");
     const nmeaReturnValue = await nmeaClient.getReadings();
-    console.log(nmeaReturnValue);
-
-    mtextElement.innerHTML = JSON.stringify(nmeaReturnValue, null, 2);
+    const parsed = parsePgnData(nmeaReturnValue);
+    mtextElement.innerHTML = parsed; //JSON.stringify(parsed, null, 2);
   } finally {
     mbutton.disabled = false;
   }
