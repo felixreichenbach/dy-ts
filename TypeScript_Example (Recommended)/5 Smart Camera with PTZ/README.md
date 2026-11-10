@@ -7,16 +7,13 @@ The code in this repo uses the viam:viamrtsp module
 
 ## Preface (general pitfalls are in here)
 
+- To make your config compatable with [njord.cloud](https://njord.cloud) you should give the PTZ controller of your camera a suffix of -ptz (i.e my-camera-ptz) so that it appears on the website.
 - This guide was developed with a Reolink TrackMix PoE, different cameras that ***SHOULD*** work with this can be found [on ipcamlive](https://www.ipcamlive.com/), if you scroll down to the footer and look at the 'Main partners' section.
 - The process for this guide will vary to some degree based off the brand of camera you have, but this should cover the bases.
 - You'll want to verify that your camera is working with an official app before using this module as you may encounter issues getting this module set up.
 - If ONVIF discovery does not work, you'll want to get your cameras IP address from your router on another network discovery tool. The most common IP addresses to access your router are `192.168.1.1` and `192.168.0.1`.
 - Some brands will require you to set up a local account for the camera so that you can access it from any local IP address, these credentials are what will be used for the `<username>:<password>`
 - If you don't need to set up a username and password then your address will be slightly different (It will be noted at the appropriate point)
-
-## Camera Discovery Methods
-
-***PLEASE NOTE:*** I was unable to get the discovery working with the Reolink camera, this is likely going to be the same for all Reolink cameras and potentially other brands as the module was made built with a different camera in mind.
 
 ### ONVIF Auto-Discovery
 - Uses ONVIF to find cameras on the local network
